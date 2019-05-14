@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2016
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetworkTracker.Database", "NetworkTracker.Database\NetworkTracker.Database.csproj", "{A50F43B6-9056-4942-9F2D-0B0064484BEB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetworkTracker.Query", "NetworkTracker.Query\NetworkTracker.Query.csproj", "{9C5EE918-6F56-43CE-8D0D-9265389A1C5B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetworkTracker.Command", "NetworkTracker.Command\NetworkTracker.Command.csproj", "{60EFFC5B-CC64-42B0-AD87-6F61CB67E1C3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetworkTracker.Database.Test", "NetworkTracker.Database.Test\NetworkTracker.Database.Test.csproj", "{58A40DEC-3320-489E-9949-90C2E07AAEEE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetworkTracker.Domain", "NetworkTracker.Domain\NetworkTracker.Domain.csproj", "{79EBC5E6-2D0A-4FBD-AF05-8E83994170AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetworkTracker.CLI", "NetworkTracker.CLI\NetworkTracker.CLI.csproj", "{14E8A67D-E98F-4D5A-A793-6D221577E251}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A50F43B6-9056-4942-9F2D-0B0064484BEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A50F43B6-9056-4942-9F2D-0B0064484BEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A50F43B6-9056-4942-9F2D-0B0064484BEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A50F43B6-9056-4942-9F2D-0B0064484BEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C5EE918-6F56-43CE-8D0D-9265389A1C5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C5EE918-6F56-43CE-8D0D-9265389A1C5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C5EE918-6F56-43CE-8D0D-9265389A1C5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C5EE918-6F56-43CE-8D0D-9265389A1C5B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60EFFC5B-CC64-42B0-AD87-6F61CB67E1C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60EFFC5B-CC64-42B0-AD87-6F61CB67E1C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60EFFC5B-CC64-42B0-AD87-6F61CB67E1C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60EFFC5B-CC64-42B0-AD87-6F61CB67E1C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58A40DEC-3320-489E-9949-90C2E07AAEEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58A40DEC-3320-489E-9949-90C2E07AAEEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58A40DEC-3320-489E-9949-90C2E07AAEEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58A40DEC-3320-489E-9949-90C2E07AAEEE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79EBC5E6-2D0A-4FBD-AF05-8E83994170AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79EBC5E6-2D0A-4FBD-AF05-8E83994170AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79EBC5E6-2D0A-4FBD-AF05-8E83994170AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79EBC5E6-2D0A-4FBD-AF05-8E83994170AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14E8A67D-E98F-4D5A-A793-6D221577E251}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14E8A67D-E98F-4D5A-A793-6D221577E251}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14E8A67D-E98F-4D5A-A793-6D221577E251}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14E8A67D-E98F-4D5A-A793-6D221577E251}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9B403417-FB6D-4AC3-B227-32E22B8E9DC2}
+	EndGlobalSection
+EndGlobal
