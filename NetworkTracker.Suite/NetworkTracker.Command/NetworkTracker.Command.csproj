@@ -153,6 +153,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommandLayer.cs" />
+    <Compile Include="Mapping.cs" />
+    <Compile Include="Model\InsertNetworkEventCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -163,10 +165,6 @@
     <ProjectReference Include="..\NetworkTracker.Database\NetworkTracker.Database.csproj">
       <Project>{a50f43b6-9056-4942-9f2d-0b0064484beb}</Project>
       <Name>NetworkTracker.Database</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\NetworkTracker.Domain\NetworkTracker.Domain.csproj">
-      <Project>{79ebc5e6-2d0a-4fbd-af05-8e83994170ab}</Project>
-      <Name>NetworkTracker.Domain</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

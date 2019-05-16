@@ -9,13 +9,13 @@ namespace NetworkTracker.CLI.Command
 {
     public class InsertNetworkEvent : ConsoleCommand
     {
-        NetworkTracker.Domain.Model.NetworkEventType EventType { get; set; }
+        string EventType { get; set; }
         string EventValue { get; set; }
 
         public InsertNetworkEvent()
         {
             IsCommand("InsertNetworkEvent", "Inserts a network event into the database.");
-            HasRequiredOption("EventType=", "Type of event. Valid options: '0' == 'Jitter'", t => this.EventType = (NetworkTracker.Domain.Model.NetworkEventType)Int32.Parse(t));
+            HasRequiredOption("EventType=", "Type of event. Valid options: 'Jitter'", t => this.EventType = t);
             HasRequiredOption("Value=", "Value for event.", v => this.EventValue = v);
         }
 
@@ -36,7 +36,7 @@ namespace NetworkTracker.CLI.Command
         void InsertNetworkEventCommand()
         {
             var cmd = new NetworkTracker.Command.CommandLayer();
-            cmd.InsertNetworkEvent(new Domain.Model.NetworkEvent() { EventType = this.EventType, Value = this.EventValue });
+            cmd.InsertNetworkEvent(new NetworkTracker.Command.Model.InsertNetworkEventCommand() { EventType = this.EventType, Value = this.EventValue });
         }
     }
 }

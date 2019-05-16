@@ -4,12 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NetworkTracker.Domain.Model
+namespace NetworkTracker.Command.Model
 {
-    public class NetworkEvent
+    public class InsertNetworkEventCommand
     {
-        public NetworkEventType EventType { get; set; }
+        public string EventType { get; set; }
         public string Value { get; set; }
-        public DateTimeOffset EventTime { get; set; }
     }
 }

@@ -9,35 +9,31 @@ namespace NetworkTracker.Command
 {
     public class CommandLayer
     {
-        public void InsertNetworkEvent(NetworkTracker.Domain.Model.NetworkEvent dEvent)
+        public void InsertNetworkEvent(Model.InsertNetworkEventCommand cmd)
         {
-            var mapper = new NetworkTracker.Domain.Maps.EventMap();
-            NetworkTracker.Database.Model.NetworkEvent mappedEvent = mapper.Map(dEvent);
+            var mapper = new Mapping();
+            var cmdValues = mapper.Map(cmd);
 
             using (var ctx = new NetworkTrackerContext())
             {
-                InsertEventTypeIfNotExists(dEvent.EventType);
+                InsertEventTypeIfNotExists(cmdValues.Item1);
 
-                var eventType = ctx.EventTypes.Where(x => x.ID == mappedEvent.EventType.ID).FirstOrDefault();
-                mappedEvent.EventType = eventType;
-                
-                ctx.NetworkEvents.Add(mappedEvent);
+                var eventType = ctx.EventTypes.Where(x => x.Type == cmdValues.Item1).FirstOrDefault();
+
+                ctx.NetworkEvents.Add(new Database.Model.NetworkEvent() { EventType = eventType, Value = cmdValues.Item2, CreateTime = DateTimeOffset.UtcNow });
                 ctx.SaveChanges();
             }
         }
 
-        public void InsertEventTypeIfNotExists(NetworkTracker.Domain.Model.NetworkEventType dType)
+        public void InsertEventTypeIfNotExists(string value)
         {
-            var mapper = new NetworkTracker.Domain.Maps.EventMap();
-            NetworkTracker.Database.Model.EventType mappedEvent = mapper.Map(dType);
-
             using (var ctx = new NetworkTrackerContext())
             {
-                var eventType = ctx.EventTypes.Where(x => x.ID == mappedEvent.ID).FirstOrDefault();
+                var eventType = ctx.EventTypes.Where(x => x.Type == value).FirstOrDefault();
 
                 if (eventType == null)
                 {
-                    ctx.EventTypes.Add(mappedEvent);
+                    ctx.EventTypes.Add(new Database.Model.EventType() { Type = value });
                     ctx.SaveChanges();
                 }
             }

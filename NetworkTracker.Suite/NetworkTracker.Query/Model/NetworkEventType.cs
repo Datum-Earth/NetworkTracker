@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NetworkTracker.Domain.Model
+namespace NetworkTracker.Query.Model
 {
     public enum NetworkEventType
     {

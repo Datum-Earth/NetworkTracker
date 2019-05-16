@@ -9,6 +9,7 @@ namespace NetworkTracker.Database.Model
 {
     public class EventType
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long ID { get; set; }
         public string Type { get; set; }
     }

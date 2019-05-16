@@ -11,8 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetworkTracker.Command", "N
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetworkTracker.Database.Test", "NetworkTracker.Database.Test\NetworkTracker.Database.Test.csproj", "{58A40DEC-3320-489E-9949-90C2E07AAEEE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetworkTracker.Domain", "NetworkTracker.Domain\NetworkTracker.Domain.csproj", "{79EBC5E6-2D0A-4FBD-AF05-8E83994170AB}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetworkTracker.CLI", "NetworkTracker.CLI\NetworkTracker.CLI.csproj", "{14E8A67D-E98F-4D5A-A793-6D221577E251}"
 EndProject
 Global
@@ -37,10 +35,6 @@ Global
 		{58A40DEC-3320-489E-9949-90C2E07AAEEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{58A40DEC-3320-489E-9949-90C2E07AAEEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{58A40DEC-3320-489E-9949-90C2E07AAEEE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{79EBC5E6-2D0A-4FBD-AF05-8E83994170AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{79EBC5E6-2D0A-4FBD-AF05-8E83994170AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{79EBC5E6-2D0A-4FBD-AF05-8E83994170AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{79EBC5E6-2D0A-4FBD-AF05-8E83994170AB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{14E8A67D-E98F-4D5A-A793-6D221577E251}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{14E8A67D-E98F-4D5A-A793-6D221577E251}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{14E8A67D-E98F-4D5A-A793-6D221577E251}.Release|Any CPU.ActiveCfg = Release|Any CPU
