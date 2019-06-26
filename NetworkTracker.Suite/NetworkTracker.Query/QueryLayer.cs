@@ -10,28 +10,27 @@ namespace NetworkTracker.Query
 {
     public class QueryLayer
     {
-        public async Task<List<Model.NetworkEvent>> GetEventsInRangeAsync(DateTimeOffset startTime, DateTimeOffset endTime)
+        public List<Model.NetworkEvent> GetEventsInRange(DateTimeOffset startTime, DateTimeOffset endTime)
         {
             var mapper = new Mapping();
             var list = new List<Model.NetworkEvent>();
 
             using (var ctx = new NetworkTrackerContext())
             {
-                var events = from e in ctx.NetworkEvents
-                             where e.CreateTime >= startTime && e.CreateTime <= endTime
-                             orderby e.CreateTime
-                             select e;
+                var events = ctx.NetworkEvents.Include(x => x.EventType);
 
-                foreach (var e in await events.ToListAsync())
-                {
-                    list.Add(new Model.NetworkEvent()
-                    {
-                        ID = e.ID,
-                        EventType = mapper.Map(e.EventType),
-                        CreateDate = e.CreateTime,
-                        Value = e.Value
-                    });
-                }
+                var eventList = events.ToList();
+
+                //foreach (var e in events)
+                //{
+                //    list.Add(new Model.NetworkEvent()
+                //    {
+                //        ID = e.ID,
+                //        EventType = mapper.Map(e.EventType),
+                //        CreateDate = e.CreateTime,
+                //        Value = e.Value
+                //    });
+                //}
             }
 
             return list;
