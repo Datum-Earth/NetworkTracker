@@ -14,23 +14,10 @@ namespace NetworkTracker.Database.Context
         public DbSet<EventType> EventTypes { get; set; }
         public DbSet<NetworkEvent> NetworkEvents { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-                var path = ConfigurationManager.AppSettings["sqlitePath"];
-                optionsBuilder.UseSqlite(path);
-            }
-        }
-
-        public NetworkTrackerContext()
-        {
-            Database.EnsureCreated();
-        }
 
         public NetworkTrackerContext(DbContextOptions<NetworkTrackerContext> options) : base(options)
         {
-            Database.EnsureCreated();
+
         }
     }
 }

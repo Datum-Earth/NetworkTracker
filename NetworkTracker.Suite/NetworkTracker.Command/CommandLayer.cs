@@ -1,6 +1,8 @@
 ﻿using NetworkTracker.Database.Context;
+using NetworkTracker.Database.Sqlite;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,33 +11,78 @@ namespace NetworkTracker.Command
 {
     public class CommandLayer
     {
-        public void InsertNetworkEvent(Model.InsertNetworkEventCommand cmd)
+        private CommandOptions _options { get; set; }
+
+        public CommandLayer()
         {
-            var mapper = new Mapping();
-            var cmdValues = mapper.Map(cmd);
 
-            using (var ctx = new NetworkTrackerContext())
-            {
-                InsertEventTypeIfNotExists(cmdValues.Item1);
-
-                var eventType = ctx.EventTypes.Where(x => x.Type == cmdValues.Item1).FirstOrDefault();
-
-                ctx.NetworkEvents.Add(new Database.Model.NetworkEvent() { EventType = eventType, Value = cmdValues.Item2, CreateTime = DateTimeOffset.UtcNow });
-                ctx.SaveChanges();
-            }
         }
 
-        public void InsertEventTypeIfNotExists(string value)
+        public CommandLayer(CommandOptions options)
         {
-            using (var ctx = new NetworkTrackerContext())
+            _options = options;
+        }
+
+        public async Task InsertNetworkEventType(Model.InsertNetworkEventTypeCommand command)
+        {
+            using (var ctx = IOC.CreateNetworkTrackerContext())
             {
-                var eventType = ctx.EventTypes.Where(x => x.Type == value).FirstOrDefault();
+                var eventType = ctx.EventTypes.Where(x => x.Type == command.Value).FirstOrDefault();
 
                 if (eventType == null)
                 {
-                    ctx.EventTypes.Add(new Database.Model.EventType() { Type = value });
-                    ctx.SaveChanges();
+                    var newType = new NetworkTracker.Database.Model.EventType()
+                    {
+                        Type = command.Value
+                    };
+
+                    await ctx.EventTypes.AddAsync(newType);
+                    await ctx.SaveChangesAsync();
                 }
+            }
+        }
+
+        public async Task InsertNetworkEvent(Model.InsertNetworkEventCommand command)
+        {
+            using (var ctx = IOC.CreateNetworkTrackerContext())
+            {
+                var eventType = (from et in ctx.EventTypes
+                                 where et.Type == command.EventType
+                                 select et).FirstOrDefaultAsync();
+
+                if (await eventType == null)
+                    throw new ArgumentOutOfRangeException("EventType does not exist.");
+
+                var newEvent = new Database.Model.NetworkEvent()
+                {
+                    EventType = await eventType,
+                    Value = command.Value,
+                    CreateTime = DateTimeOffset.UtcNow
+                };
+
+                await ctx.NetworkEvents.AddAsync(newEvent);
+                await ctx.SaveChangesAsync();
+            }
+        }
+
+        NetworkTrackerContext CreateNetworkTrackerContext()
+        {
+            if (_options != null)
+            {
+                if (_options.ProviderOptions != null)
+                {
+                    if (_options.ProviderOptions.Provider == DatabaseProviderType.Sqlite)
+                    {
+                        var factory = new SqliteContextFactory();
+                        return String.IsNullOrWhiteSpace(_options.ProviderOptions.ConnectionString) 
+                            ? factory.CreateSqliteContext() 
+                            : factory.CreateSqliteContext(_options.ProviderOptions.ConnectionString);
+                    }
+                }
+            } else
+            {
+                var factory = new SqliteContextFactory();
+                return factory.CreateSqliteContext();
             }
         }
     }

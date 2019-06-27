@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NetworkTracker.Command
+namespace NetworkTracker.Command.Model
 {
-    internal class Mapping
+    public class InsertNetworkEventTypeCommand
     {
-        
+        public string Value { get; set; }
     }
 }

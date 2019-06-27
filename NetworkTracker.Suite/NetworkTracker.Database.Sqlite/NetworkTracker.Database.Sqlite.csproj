@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{60EFFC5B-CC64-42B0-AD87-6F61CB67E1C3}</ProjectGuid>
+    <ProjectGuid>{FE127849-7B87-45FD-BAF0-BF830B731241}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>NetworkTracker.Command</RootNamespace>
-    <AssemblyName>NetworkTracker.Command</AssemblyName>
+    <RootNamespace>NetworkTracker.Database.Sqlite</RootNamespace>
+    <AssemblyName>NetworkTracker.Database.Sqlite</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -33,12 +33,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Data.Sqlite, Version=2.2.4.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Data.Sqlite.Core.2.2.4\lib\netstandard2.0\Microsoft.Data.Sqlite.dll</HintPath>
     </Reference>
@@ -152,26 +146,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CommandLayer.cs" />
-    <Compile Include="CommandOptions.cs" />
-    <Compile Include="Mapping.cs" />
-    <Compile Include="Model\InsertNetworkEventCommand.cs" />
-    <Compile Include="Model\InsertNetworkEventTypeCommand.cs" />
+    <Compile Include="SqliteContextFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\NetworkTracker.Database.Sqlite\NetworkTracker.Database.Sqlite.csproj">
-      <Project>{fe127849-7b87-45fd-baf0-bf830b731241}</Project>
-      <Name>NetworkTracker.Database.Sqlite</Name>
-    </ProjectReference>
     <ProjectReference Include="..\NetworkTracker.Database\NetworkTracker.Database.csproj">
       <Project>{a50f43b6-9056-4942-9f2d-0b0064484beb}</Project>
       <Name>NetworkTracker.Database</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\SQLitePCLRaw.lib.e_sqlite3.linux.1.1.12\build\net35\SQLitePCLRaw.lib.e_sqlite3.linux.targets" Condition="Exists('..\packages\SQLitePCLRaw.lib.e_sqlite3.linux.1.1.12\build\net35\SQLitePCLRaw.lib.e_sqlite3.linux.targets')" />
